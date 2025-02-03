@@ -60,7 +60,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="flex flex-col lg:flex-row gap-6">
-        {/* Sidebar */}
+    
         <div className="w-full lg:w-1/4 bg-white p-6 rounded-lg shadow-md">
           <div className="space-y-6">
             <div>
@@ -104,7 +104,6 @@ function App() {
           </div>
         </div>
 
-        {/* Main Content */}
         <div className="w-full lg:w-3/4">
           {loading ? (
             <div className="flex justify-center items-center h-64">
