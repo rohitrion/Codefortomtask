@@ -15,6 +15,7 @@ function App() {
   const [itemsPerPage] = useState(6);
   const [totalPages, setTotalPages] = useState(0);
   const [open, setOpen] = useState(false);
+  const [activeButton, setActiveButton] = useState("news");
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
@@ -71,18 +72,20 @@ function App() {
               <h4 className="text-xl font-semibold text-gray-800">View Toggle</h4>
               <div className="flex gap-2">
                 <button
-                  onClick={() => setToggle(!toggle)}
-                  className={`p-2 rounded-lg ${
-                    toggle ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'
-                  }`}
+                  onClick={() => setActiveButton("news")}
+                  className={`p-2 rounded-lg transition ${activeButton === "news"
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-200 text-gray-700"
+                    }`}
                 >
                   📰
                 </button>
                 <button
-                  onClick={() => setToggle(!toggle)}
-                  className={`p-2 rounded-lg ${
-                    toggle ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'
-                  }`}
+                  onClick={() => setActiveButton("doc")}
+                  className={`p-2 rounded-lg transition ${activeButton === "doc"
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-200 text-gray-700"
+                    }`}
                 >
                   📃
                 </button>
@@ -109,9 +112,8 @@ function App() {
             </div>
           ) : (
             <div
-              className={`grid gap-6 ${
-                toggle ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-              }`}
+              className={`grid gap-6 ${activeButton === "news" ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                }`}
             >
               {currentItems.map((item, index) => (
                 <div
